@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "DeskSync",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

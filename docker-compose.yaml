@@ -35,9 +35,21 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: adonis
       MYSQL_USER: adonis
-      MYSQL_PASSWORD: secret
+      MYSQL_PASSWORD: rootpassword
     volumes:
       - mariadb_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+    depends_on:
+      - database
 
 volumes:
   mariadb_data:
