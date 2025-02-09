@@ -13,6 +13,8 @@
 */
 
 import { Bouncer } from '@adonisjs/bouncer'
+import User from "#models/user";
+import Company from "#models/company";
 
 /**
  * Delete the following ability to start from
@@ -21,3 +23,9 @@ import { Bouncer } from '@adonisjs/bouncer'
 export const editUser = Bouncer.ability(() => {
   return true
 })
+
+export const isOwnerCompany = Bouncer.ability((user: User, company: Company) => {
+  return user.id === company.userId
+})
+
+

@@ -1,0 +1,21 @@
+meta {
+  name: Edit Company
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/api/company/5
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "testqsdqsd"
+  }
+}

@@ -1,5 +1,7 @@
-import { CompanyPayload, Company } from '#types/company'
+// @ts-ignore
+import {Company, CompanyPayload} from '#types/company'
 import CompanyModel from '#models/company'
+import {user} from "../types/user.js";
 
 export default class CompanyService {
   public async create(companyData: CompanyPayload) {
@@ -20,10 +22,9 @@ export default class CompanyService {
     }
   }
 
-  public async readAll(): Promise<Company[]> {
+  public async readAll(user: user) {
     try {
-      const companies = await CompanyModel.all()
-      return companies as Company[]
+      return await CompanyModel.query().where('user_id', user.id);
     } catch (error) {
       throw new Error('Erreur lors de la lecture des compagnies')
     }
