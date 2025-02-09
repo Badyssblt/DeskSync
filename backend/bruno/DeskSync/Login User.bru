@@ -6,6 +6,18 @@ meta {
 
 post {
   url: {{baseUrl}}/login
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "email": "badyss.blt@gmail.com",
+    "password": "badyss"
+  }
+}
+
+script:post-response {
+  let data = res.getBody();
+  bru.setEnvVar("token",data.token);
 }

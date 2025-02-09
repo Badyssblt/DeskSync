@@ -1,0 +1,29 @@
+meta {
+  name: Create Company
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/company
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "name": "test",
+    "email": "test",
+    "siret": 2345,
+    "address": "qsdqsdq",
+    "form": "qsdqsdq",
+    "phone": "sqdqsdqsd",
+    "website": "sqdqsd",
+    "created": "2024-03-24",
+    "status": "qqsd"
+  }
+}
