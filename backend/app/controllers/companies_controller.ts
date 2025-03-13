@@ -3,7 +3,6 @@ import {HttpContext} from "@adonisjs/core/http";
 import CompanyService from "#services/company_service";
 import {inject} from "@adonisjs/core";
 import {isOwnerCompany} from "#abilities/main";
-import {user} from "../types/user.js";
 
 export default class CompaniesController {
 
@@ -15,7 +14,7 @@ export default class CompaniesController {
 
     data.user_id = user?.id
 
-    await companyService.create(data)
+    return await companyService.create(data)
   }
 
   @inject()
@@ -30,6 +29,7 @@ export default class CompaniesController {
     const company = await companyService.readOne(params.id);
 
     if(await bouncer.allows(isOwnerCompany, company)){
+      await company.load('employees')
       return company;
     }
 
@@ -40,10 +40,8 @@ export default class CompaniesController {
   @inject()
   async update({ params, request, bouncer, response }: HttpContext, companyService: CompanyService){
     const companyCheck = await companyService.readOne(params.id);
-
     if(await bouncer.allows(isOwnerCompany, companyCheck)){
       return await companyService.update(params.id, request.body());
-
     }
 
     return response.forbidden("Vous n'avez pas accès à ceci")

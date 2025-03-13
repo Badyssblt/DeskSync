@@ -1,11 +1,11 @@
 meta {
-  name: Edit Company
+  name: Edit Employee
   type: http
-  seq: 4
+  seq: 2
 }
 
 patch {
-  url: {{baseUrl}}/api/company/7
+  url: {{baseUrl}}/api/employee/9
   body: json
   auth: bearer
 }
@@ -16,6 +16,6 @@ auth:bearer {
 
 body:json {
   {
-    "name": "testqsdqsd"
+    "firstname": "test"
   }
 }

@@ -1,0 +1,32 @@
+meta {
+  name: Create Employee
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/employee
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "firstname": "Badyss",
+    "lastname": "Blilita",
+    "email": "badyss.blt10@gmail.com",
+    "phone_number": "3453234",
+    "address": "S234R3SD",
+    "position": "test",
+    "hiredAt": "2024-03-24",
+    "type": "qsdqs",
+    "salary": 23,
+    "hourPerMonth": 23,
+    "status": "test",
+    "companyId": 7
+  }
+}

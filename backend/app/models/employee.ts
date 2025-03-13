@@ -1,14 +1,17 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
-import type { HasOne } from '@adonisjs/lucid/types/relations'
+import {BaseModel, belongsTo, column} from '@adonisjs/lucid/orm'
+import type {BelongsTo} from '@adonisjs/lucid/types/relations'
 import Company from "#models/company";
 
 export default class Employee extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
-  @hasOne(() => Company)
-  declare company: HasOne<typeof Company>
+  @belongsTo(() => Company)
+  declare company: BelongsTo<typeof Company>
+
+  @column()
+  declare companyId: number
 
   @column()
   declare firstname: string
