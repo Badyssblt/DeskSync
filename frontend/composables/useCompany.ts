@@ -17,7 +17,7 @@ export const useCompany = () => {
             const response = await $api.get(`/api/companies`);
             return response.data;
         }catch(error) {
-
+            return null
         }
     }
 

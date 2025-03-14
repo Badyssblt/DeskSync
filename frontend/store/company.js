@@ -14,6 +14,7 @@ export const useLocalCompany = defineStore(
         return {
             setCompany,
             getCompany,
+            companyId,
         }
     },
     {
