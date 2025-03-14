@@ -45,7 +45,7 @@ const onSubmit = handleSubmit((values) => {
             <SelectValue placeholder="Choisir une entreprise" />
           </SelectTrigger>
           <SelectContent>
-            <Button class="w-full" @click="navigateTo('/company/create')">
+            <Button class="w-full" @click="navigateTo('/dashboard/company/create')">
               <CirclePlus class="w-4 h-4 mr-2" />
               Créer une entreprise
             </Button>
