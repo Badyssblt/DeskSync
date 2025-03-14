@@ -27,7 +27,9 @@ export default defineNuxtPlugin((nuxtApp) => {
   api.interceptors.request.use((config) => {
     const token = store?.token;
 
-    if (token && isTokenValid(token) && store.isAuthenticated) {
+
+
+    if (token && store?.isAuthenticated) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
